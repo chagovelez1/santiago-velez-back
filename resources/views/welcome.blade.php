@@ -1,95 +1,196 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
 
-        <title>Laravel</title>
+    <title>RAPPI TEST</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Styles -->
+    <style>
+      html, body {
+        background-color: #fff;
+        color: #636b6f;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 100;
+        height: 100vh;
+        margin: 0;
+      }
 
-            .full-height {
-                height: 100vh;
-            }
+      .full-height {
+        height: 100vh;
+      }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+      .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
 
-            .position-ref {
-                position: relative;
-            }
+      .position-ref {
+        position: relative;
+      }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+      .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+      }
 
-            .content {
-                text-align: center;
-            }
+      .content {
+        text-align: center;
+      }
 
-            .title {
-                font-size: 84px;
-            }
+      .title {
+        font-size: 84px;
+      }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+      .links > a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
+      .m-b-md {
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+    <div class="content">
+      <div class="title m-b-md">
+        Cube Summation
+      </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
+      <form method="POST" action="/create_matrix">
+        {{ csrf_field() }}
+        Matrix size 
+        <input>
+        <input value="create" type="submit">
+      </form>
+
+      <hr>
+
+      <form method="POST" action="/update">
+        {{ csrf_field() }}
+        <table>
+          <thead>
+            <tr>
+              <th>POSTION</th>
+              <th>UPDATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                X
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Y
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Z
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input value="update" type="submit"></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+      <br>
+      <br>
+      <hr>
+
+      <form method="POST" action="/query">
+        {{ csrf_field() }}
+        <table>
+          <thead>
+            <tr>
+              <th>POSTION</th>
+              <th>Query</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                X1
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Y1
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Z1
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                X2
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Y2
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Z2
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input value="query" type="submit"></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+      <hr>
+    </div>
+
+  </body>
 </html>
