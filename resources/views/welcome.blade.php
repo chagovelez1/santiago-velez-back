@@ -65,16 +65,17 @@
 
     <div class="content">
       <div class="title m-b-md">
-        Cube Summation
+        Cube Summation 
       </div>
 
-      <form method="POST" action="/create_matrix">
+      <form method="POST" action="/cube/create">
         {{ csrf_field() }}
         Matrix size 
-        <input>
-        <input value="create" type="submit">
+        <input type="number" required="" name="size">
+        <input value="create new matrix" type="submit">
       </form>
 
+      @if(Session::has('matrix'))
       <hr>
 
       <form method="POST" action="/update">
@@ -106,6 +107,14 @@
             <tr>
               <td>
                 Z
+              </td>
+              <td>
+                <input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                value
               </td>
               <td>
                 <input>
@@ -189,7 +198,14 @@
         </table>
       </form>
 
+      @if (isset($result)) 
+      <h1>THE RESULT IS: {{ $result }}</h1>
+      @endif
+
       <hr>
+
+      @endif
+
     </div>
 
   </body>
