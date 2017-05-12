@@ -12,7 +12,7 @@ class CubeController extends Controller {
 
   public function create(Request $request) {
     $this->validate($request, [
-        'size' => 'required|max:100|min:1'
+        'size' => 'required|numeric|max:100|min:1'
     ]);
 
     $size = $request->size;
