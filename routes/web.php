@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::post('cube/create', 'CubeController@create');
+Route::post('cube/update', 'CubeController@update');

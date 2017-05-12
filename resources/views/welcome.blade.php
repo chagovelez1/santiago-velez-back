@@ -78,7 +78,7 @@
       @if(Session::has('matrix'))
       <hr>
 
-      <form method="POST" action="/update">
+      <form method="POST" action="{{action('CubeController@update')}}">
         {{ csrf_field() }}
         <table>
           <thead>
@@ -93,7 +93,7 @@
                 X
               </td>
               <td>
-                <input>
+                <input name="x" min="1" max="{{Session::get('N')}}">
               </td>
             </tr>
             <tr>
@@ -101,7 +101,7 @@
                 Y
               </td>
               <td>
-                <input>
+                <input name="y">
               </td>
             </tr>
             <tr>
@@ -109,7 +109,7 @@
                 Z
               </td>
               <td>
-                <input>
+                <input name="z">
               </td>
             </tr>
             <tr>
@@ -117,7 +117,7 @@
                 value
               </td>
               <td>
-                <input>
+                <input name="val" min="-1000000000" max="1000000000">
               </td>
             </tr>
             <tr>
