@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class CubeController extends Controller {
+  
+  public function index(){
+    return view('cube');
+  }
 
   public function create(Request $request) {
     $this->validate($request, [
@@ -22,7 +26,7 @@ class CubeController extends Controller {
     }
     $request->session()->put('matrix', $matrix);
     $request->session()->put('N', $size);
-    return view('welcome');
+    return redirect('cube')->with('message','Matrix of size '.$size.' created.');
   }
   
   public function update(Request $request) {
@@ -35,14 +39,34 @@ class CubeController extends Controller {
     ]);
     
     $matrix = $request->session()->pull('matrix');
+    $old_val = $matrix[$request->x-1][$request->y-1][$request->z-1];
     $matrix[$request->x-1][$request->y-1][$request->z-1] = (float)$request->val ;
     $request->session()->put('matrix', $matrix);
-    dd(session('matrix'));
-    return view('welcome');
+    $message = '('.$request->x.','.$request->y.','.$request->z.') updated from val = '.$old_val.' to val ='.$request->val;
+    return redirect('cube')->with('message',$message);
   }
-
-  public function query() {
-    return view('welcome', ['result' => 'test']);
+ 
+  public function query(Request $request) {
+    $N = $request->session()->get('N');
+    $this->validate($request, [
+        'x1' => 'required|numeric|min:1|max:'.($N-1),
+        'y1' => 'required|numeric|min:1|max:'.($N-1),
+        'z1' => 'required|numeric|min:1|max:'.($N-1),
+        'x2' => 'required|numeric|min:'.$request->x1.'|max:'.$N,
+        'y2' => 'required|numeric|min:'.$request->y1.'|max:'.$N,
+        'z2' => 'required|numeric|min:'.$request->z1.'|max:'.$N
+    ]);
+    
+    $result = 0;
+    $matrix = $request->session()->get('matrix');
+    for ($x = $request->x1-1 ; $x <= $request->x2-1; $x++) {
+      for ($y = $request->y1-1 ; $y <= $request->y2-1; $y++) {
+        for ($z = $request->z1-1 ; $z <= $request->z2-1; $z++) {
+          $result += $matrix[$x][$y][$z];
+        }
+      }
+    }
+    return redirect('cube')->with('message','THE QUERY RESULT IS: '.$result);
   }
 
 }
