@@ -54,21 +54,38 @@ class Cube {
   
   private function validateUpdate($x, $y, $z, $val) {
     if ($x < 1 or $this->N < $x) {
-      abort(400, 'the X parameters should be between 1 and '.$this->N.' you input '.$x);
+      abort(400, 'the X parameters of in UPDATE should be between 1 and '.$this->N.' you input '.$x);
     }
     if ($y < 1 or $this->N < $y) {
-      abort(400, 'the Y parameters should be between 1 and '.$this->N.' you input '.$y);
+      abort(400, 'the Y parameters in UPDATE should be between 1 and '.$this->N.' you input '.$y);
     }
     if ($z < 1 or $this->N < $z) {
-      abort(400, 'the Z parameters should be between 1 and '.$this->N.' you input '.$z);
+      abort(400, 'the Z parameters in UPDATE should be between 1 and '.$this->N.' you input '.$z);
     }
-    if ($val < 1 or $this->N < $val) {
-      abort(400, 'the VAl pameters for update should be between 1 and '.$$this->N.' you input '.$val);
+    if ($val < -1000000000 or 1000000000 < $val) {
+      abort(400, 'the VAl pameters for UPDATE should be between -1000000000 and 1000000000 you input '.$val);
     }
   }
   
   private function validateQuery($x1, $y1, $z1, $x2, $y2, $z2) {
-    
+     if ($x1 < 1 or $this->N < $x1) {
+      abort(400, 'the X1 parameters should be between 1 and '.($this->N).' you input '.$x1);
+    }
+     if ($y1 < 1 or $this->N < $y1) {
+      abort(400, 'the Y1 parameters should be between 1 and '.($this->N).' you input '.$y1);
+    }
+     if ($z1 < 1 or $this->N < $z1) {
+      abort(400, 'the Z1 parameters should be between 1 and '.($this->N).' you input '.$z1);
+    }
+    if ($x2 < $x1 or $this->N < $x2) {
+      abort(400, 'the X2 parameters should be between X1  and '.($this->N).' you input '.$x2);
+    }
+    if ($y2 < $y1 or $this->N < $y2) {
+      abort(400, 'the Y2 parameters should be between Y1  and '.($this->N).' you input '.$y2);
+    }
+    if ($z2 < $z1 or $this->N < $z2) {
+      abort(400, 'the Z2 parameters should be between Z1  and '.($this->N).' you input '.$z2);
+    }
 }
 
 }

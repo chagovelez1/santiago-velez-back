@@ -31,7 +31,7 @@ class StandarCubeController extends Controller {
       $results .= $this->perform_operations($cube, $operations);
       $rows_to_jum += $M+1;
     }
-    return $results;
+    return redirect('standar-cube')->with('results',$results);
   }
   
   private function perform_operations(Cube $cube,$operations) {
@@ -52,7 +52,7 @@ class StandarCubeController extends Controller {
           if(count($params)!= 7){
             abort(400,'A QUERY operation must have 7 params, check you inputs and try again');
           }
-          $results .= $cube->query($params[1], $params[2], $params[3], $params[4], $params[5], $params[6]);
+          $results .= $cube->query($params[1], $params[2], $params[3], $params[4], $params[5], $params[6]).PHP_EOL;
           break;
         default :
           abort(400,'you input a non valid operation:'. $params[0]);

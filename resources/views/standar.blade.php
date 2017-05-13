@@ -67,6 +67,12 @@
       <div class="title m-b-md">
         Cube Summation 
       </div>
+      
+       @if (session('results'))
+       <h3>Results from previous test are</h3>
+        {{!! nl2br(session('results')) !!}}
+      
+      @endif
 
       <div class="content">
         <h1>Enter here the test</h1>

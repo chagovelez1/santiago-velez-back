@@ -95,7 +95,7 @@
         </form>
       </div>
 
-      @if(Session::has('matrix'))
+      @if(Session::has('cube'))
       <br>
       <br>
       <hr>      

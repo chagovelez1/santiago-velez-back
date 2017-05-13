@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cube;
 
 class CubeController extends Controller {
   
@@ -16,15 +17,8 @@ class CubeController extends Controller {
     ]);
 
     $size = $request->size;
-    $matrix[][][] = 0;
-    for ($x = 0; $x <= $size - 1; $x++) {
-      for ($y = 0; $y <= $size - 1; $y++) {
-        for ($z = 0; $z <= $size - 1; $z++) {
-          $matrix[$x][$y][$z]=0;
-        }
-      }
-    }
-    $request->session()->put('matrix', $matrix);
+    $cube = new Cube($size);
+    $request->session()->put('cube', $cube);
     $request->session()->put('N', $size);
     return redirect('cube')->with('message','Matrix of size '.$size.' created.');
   }
@@ -38,11 +32,10 @@ class CubeController extends Controller {
         'val' => 'required|numeric|min:-1000000000|max:1000000000',
     ]);
     
-    $matrix = $request->session()->pull('matrix');
-    $old_val = $matrix[$request->x-1][$request->y-1][$request->z-1];
-    $matrix[$request->x-1][$request->y-1][$request->z-1] = (float)$request->val ;
-    $request->session()->put('matrix', $matrix);
-    $message = '('.$request->x.','.$request->y.','.$request->z.') updated from val = '.$old_val.' to val ='.$request->val;
+    $cube = $request->session()->pull('cube');
+    $cube->update($request->x,$request->y,$request->z,$request->val);
+    $request->session()->put('cube', $cube);
+    $message = '('.$request->x.','.$request->y.','.$request->z.') updated to val ='.$request->val;
     return redirect('cube')->with('message',$message);
   }
  
@@ -58,14 +51,8 @@ class CubeController extends Controller {
     ]);
     
     $result = 0;
-    $matrix = $request->session()->get('matrix');
-    for ($x = $request->x1-1 ; $x <= $request->x2-1; $x++) {
-      for ($y = $request->y1-1 ; $y <= $request->y2-1; $y++) {
-        for ($z = $request->z1-1 ; $z <= $request->z2-1; $z++) {
-          $result += $matrix[$x][$y][$z];
-        }
-      }
-    }
+    $cube = $request->session()->get('cube');
+    $result = $cube->query($request->x1,$request->y1,$request->z1,$request->x2,$request->y2,$request->z2);
     return redirect('cube')->with('message','THE QUERY RESULT IS: '.$result);
   }
 
