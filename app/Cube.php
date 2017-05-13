@@ -23,6 +23,10 @@ class Cube {
     $this->validation_enabled=$validate;
     $this->N = $size;
   }
+  
+  public function getMatrix(){
+    return $this->matrix;
+  }
 
   public function update($x, $y, $z, $val) {
     if($this->validation_enabled){
