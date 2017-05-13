@@ -65,17 +65,14 @@
 
     <div class="content">
       <div class="title m-b-md">
-        Cube Summation 
+        Bad Input 
       </div>
 
       <div class="content">
-        <h3>Hello <span style="color: red">Rappi</span>, you have 2 options for using this app, you can either do it step by step with an interactive way, or you can do it by pasting a big texts with the test cases like in the decription of the problem said it should be. <span style="color: red">My recomendation is to use the interactive one, its more fun.</span></h3>
-        <br>
-        <a href="{{action('CubeController@index')}}">INTERACTIVE WAY</a>
-        <br>
-        <br>
-        <a href="{{action('StandarCubeController@index')}}">standard way</a>
+        <h2>{{ $exception->getMessage() }}</h2>
+        <h2>go back and try again</h2>
       </div>
-      
   </body>
 </html>
+
+

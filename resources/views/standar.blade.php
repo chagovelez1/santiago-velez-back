@@ -69,13 +69,27 @@
       </div>
 
       <div class="content">
-        <h3>Hello <span style="color: red">Rappi</span>, you have 2 options for using this app, you can either do it step by step with an interactive way, or you can do it by pasting a big texts with the test cases like in the decription of the problem said it should be. <span style="color: red">My recomendation is to use the interactive one, its more fun.</span></h3>
-        <br>
-        <a href="{{action('CubeController@index')}}">INTERACTIVE WAY</a>
-        <br>
-        <br>
-        <a href="{{action('StandarCubeController@index')}}">standard way</a>
+        <h1>Enter here the test</h1>
+        <form method="POST" action="{{action('StandarCubeController@test')}}">
+          {{ csrf_field() }}
+          <textarea name="input" cols="40" rows="20">
+2
+4 5
+UPDATE 2 2 2 4
+QUERY 1 1 1 3 3 3
+UPDATE 1 1 1 23
+QUERY 2 2 2 4 4 4
+QUERY 1 1 1 3 3 3
+2 4
+UPDATE 2 2 2 1
+QUERY 1 1 1 1 1 1
+QUERY 1 1 1 2 2 2
+QUERY 2 2 2 2 2 2
+          </textarea>
+          <br>
+          <input type="submit" value="submit">
+          
+        </form>
       </div>
-      
   </body>
 </html>

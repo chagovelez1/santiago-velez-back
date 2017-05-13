@@ -19,3 +19,6 @@ Route::get('cube', 'CubeController@index');
 Route::post('cube/create', 'CubeController@create');
 Route::post('cube/update', 'CubeController@update');
 Route::post('cube/query', 'CubeController@query');
+
+Route::get('standar-cube', 'StandarCubeController@index');
+Route::post('standar-cube', 'StandarCubeController@test');
