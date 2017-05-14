@@ -1,16 +1,6 @@
 <?php
 
 class refactor1 {
-  /*
-   * - No hacer validacion de los input
-   * - llamar una variable co el nombre id, sin especificar la id de que es (nombres no descriptivos de variables)
-   * - dejar pedazos de codigo usado para pruebas comentado
-   * - guardar el valor de return de $push a android o a ios cuando no se usa (variables sin usar)
-   * - hacer updates del mismo modelo varias veces por separado pudiendo hacerlas una sola vez
-   * - hacer uso varias veces del metodo find del modelo service sin necesidad de hacerlo
-   * - Nombrar variables en español cuando los modelos y demas variable sy atributos externos al metodo esta en ingles
-   * - Implementar validaciones en una serie de if anaidados (los if anidados deberian evitarse al maximo en especial si el codigo interno va a ser largo)
-   */
 
   public function post_confirm(Request $request) {
     //validate input
